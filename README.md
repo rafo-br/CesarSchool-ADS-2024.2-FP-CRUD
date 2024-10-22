@@ -2,6 +2,8 @@
 
 Bem-vindo ao **Meu Novo Pet**, um sistema de cadastro de pets que permite a você gerenciar informações sobre seus animais de estimação de forma simples e prática!
 
+Além disso, também é possível cadastrar pessoas interessadas nos pets e registrar doações recebidas.
+
 ## 📚 Descrição do Projeto
 
 Este projeto foi desenvolvido como parte da disciplina de **Fundamentos de Programação** na **Cesar School**, no primeiro período. O sistema permite que os usuários:
