@@ -1,8 +1,14 @@
 [
     {
-        "nome": "Chuchu",
+        "nome": "Layla",
         "especie": "Gato",
-        "raça": "Vira-lata",
+        "raça": "Vira-Lata",
+        "idade": 1
+    },
+    {
+        "nome": "Lulu",
+        "especie": "Cachorro",
+        "raça": "Pug",
         "idade": 2
     }
 ]

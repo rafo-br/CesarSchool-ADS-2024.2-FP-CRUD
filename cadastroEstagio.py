@@ -197,6 +197,7 @@ def SistemaAnimais():
                 ExcluirAnimal(indice)
             case 5:
                 MenuPrincipal()
+                break
             case 0:
                 print("Finalizando o programa!")
                 return False
