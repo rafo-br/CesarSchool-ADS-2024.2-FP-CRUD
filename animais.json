@@ -1,14 +1,9 @@
 [
     {
-        "nome": "Layla",
-        "especie": "Gato",
-        "raça": "Vira-Lata",
-        "idade": 1
-    },
-    {
         "nome": "Lulu",
-        "especie": "Cachorro",
-        "raça": "Pug",
+        "sexo": "F",
+        "especie": "Gato",
+        "raça": "Vira-lata",
         "idade": 2
     }
 ]

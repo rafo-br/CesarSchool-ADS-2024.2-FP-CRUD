@@ -63,14 +63,16 @@ def MenuPrincipal():
 
 # --------------------------------------- FUNÇÕES SISTEMA ANIMAL ------------------------------------------
 
-def CadastrarAnimal(nomeDoAnimal, especieDoAnimal, racaDoAnimal, idadeDoAnimal):
+def CadastrarAnimal(nomeDoAnimal, sexoDoAnimal, especieDoAnimal, racaDoAnimal, idadeDoAnimal):
     nome = nomeDoAnimal
+    sexo = sexoDoAnimal
     especie = especieDoAnimal
     raca = racaDoAnimal
     idade = int(idadeDoAnimal)
     
     animal = {
         "nome": nome,
+        "sexo": sexo,
         "especie": especie,
         "raça": raca,
         "idade": idade
@@ -105,6 +107,7 @@ def VisualizarAnimais():
             for animal in animais:
                 print(f"Animal {i}:")
                 print(f"Nome: {animal['nome']}")
+                print(f"Sexo: {animal['sexo']}")
                 print(f"Espécie: {animal['especie']}")
                 print(f"Raça: {animal['raça']}")
                 print(f"Idade: {animal['idade']} anos")
@@ -117,12 +120,13 @@ def VisualizarAnimais():
         print("Arquivo de animais não encontrado.")
 
 
-def AtualizarAnimal(indice, novo_nome, nova_especie, nova_raca, nova_idade):
+def AtualizarAnimal(indice, novo_nome, novo_sexo, nova_especie, nova_raca, nova_idade):
     if os.path.exists("animais.json"):
         with open("animais.json", 'r') as arquivo:
             animais = json.load(arquivo)
             if 1 <= indice <= len(animais):
                 animais[indice - 1]['nome'] = novo_nome
+                animais[indice - 1]['sexo'] = novo_sexo
                 animais[indice - 1]['especie'] = nova_especie
                 animais[indice - 1]['raça'] = nova_raca
                 animais[indice - 1]['idade'] = int(nova_idade)
@@ -133,7 +137,7 @@ def AtualizarAnimal(indice, novo_nome, nova_especie, nova_raca, nova_idade):
                 time.sleep(2)
                 print("Cadastro atualizado com sucesso!")
             else:
-                print("Índice inválido. Retornando para o SistemaAnimais.")
+                print("Índice inválido.")
     else:
         print("Arquivo de animais não encontrado.")
 
@@ -150,7 +154,7 @@ def ExcluirAnimal(indice):
                 time.sleep(2)
                 print("Animal deletado com sucesso!")
             else:
-                print("Índice inválido. Retornando para o SistemaAnimais.")
+                print("Índice inválido.")
     else:
         print("Arquivo de animais não encontrado.")
 
@@ -174,10 +178,11 @@ def SistemaAnimais():
             case 1:
                 limpar_console()
                 nomeDoAnimal = input("Digite o nome do animal: ")
+                sexoDoAnimal = input("Digite o sexo do animal (M/F): ")
                 especieDoAnimal = input("Digite a espécie do animal: ")
                 racaDoAnimal = input("Digite a raça do animal: ")
                 idadeDoAnimal = int(input("Digite a idade do animal: "))
-                CadastrarAnimal(nomeDoAnimal, especieDoAnimal, racaDoAnimal, idadeDoAnimal)
+                CadastrarAnimal(nomeDoAnimal, sexoDoAnimal, especieDoAnimal, racaDoAnimal, idadeDoAnimal)
             case 2:
                 limpar_console()
                 VisualizarAnimais()
@@ -186,10 +191,11 @@ def SistemaAnimais():
                 VisualizarAnimais() 
                 indice = int(input("Digite o índice do animal que deseja atualizar: "))
                 novo_nome = input("Digite o novo nome do animal: ")
+                novo_sexo = input("Digite o novo sexo do animal (M/F): ")
                 nova_especie = input("Digite a nova espécie do animal: ")
                 nova_raca = input("Digite a nova raça do animal: ")
                 nova_idade = int(input("Digite a nova idade do animal: "))
-                AtualizarAnimal(indice, novo_nome, nova_especie, nova_raca, nova_idade)
+                AtualizarAnimal(indice, novo_nome, novo_sexo, nova_especie, nova_raca, nova_idade)
             case 4:
                 limpar_console()
                 VisualizarAnimais()
@@ -213,4 +219,3 @@ def SistemaAnimais():
 # --------------------------------------- MAIN ------------------------------------------
 
 MenuPrincipal()
-
