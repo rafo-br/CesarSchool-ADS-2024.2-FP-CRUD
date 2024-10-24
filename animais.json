@@ -3,7 +3,14 @@
         "nome": "Lulu",
         "sexo": "F",
         "especie": "Gato",
-        "ra�a": "Vira-lata",
+        "raça": "Vira-lata",
         "idade": 2
+    },
+    {
+        "nome": "fsdç",
+        "sexo": "m",
+        "especie": "fas",
+        "raca": "fdsç",
+        "idade": 10
     }
 ]

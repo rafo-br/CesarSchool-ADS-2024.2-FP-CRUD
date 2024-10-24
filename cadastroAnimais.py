@@ -3,6 +3,7 @@ import os
 import time
 
 # --------------------------------------- FUNÇÕES: GLOBAL ------------------------------------------
+caminho_arquivo = "./animais.json"
 
 def limpar_console():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -74,12 +75,12 @@ def CadastrarAnimal(nomeDoAnimal, sexoDoAnimal, especieDoAnimal, racaDoAnimal, i
         "nome": nome,
         "sexo": sexo,
         "especie": especie,
-        "raça": raca,
+        "raca": raca,
         "idade": idade
     }
     
-    if os.path.exists("animais.json"):
-        with open("animais.json", 'r') as arquivo:
+    if os.path.exists(caminho_arquivo):
+        with open(caminho_arquivo, 'r') as arquivo:
             try:
                 animais = json.load(arquivo)
             except json.JSONDecodeError:
@@ -89,7 +90,7 @@ def CadastrarAnimal(nomeDoAnimal, sexoDoAnimal, especieDoAnimal, racaDoAnimal, i
     
     animais.append(animal)
     
-    with open("animais.json", 'w') as arquivo:
+    with open(caminho_arquivo, 'w') as arquivo:
         json.dump(animais, arquivo, indent=4, ensure_ascii=False)
     
     print("Cadastrando animal...")
@@ -98,8 +99,8 @@ def CadastrarAnimal(nomeDoAnimal, sexoDoAnimal, especieDoAnimal, racaDoAnimal, i
 
 
 def VisualizarAnimais():
-    if os.path.exists("animais.json"):
-        with open("animais.json", 'r') as arquivo:
+    if os.path.exists(caminho_arquivo):
+        with open(caminho_arquivo, 'r') as arquivo:
             animais = json.load(arquivo)
         
         if animais:
@@ -109,7 +110,7 @@ def VisualizarAnimais():
                 print(f"Nome: {animal['nome']}")
                 print(f"Sexo: {animal['sexo']}")
                 print(f"Espécie: {animal['especie']}")
-                print(f"Raça: {animal['raça']}")
+                print(f": {animal['raca']}")
                 print(f"Idade: {animal['idade']} anos")
                 print("*******************************")
                 i += 1
@@ -121,17 +122,17 @@ def VisualizarAnimais():
 
 
 def AtualizarAnimal(indice, novo_nome, novo_sexo, nova_especie, nova_raca, nova_idade):
-    if os.path.exists("animais.json"):
-        with open("animais.json", 'r') as arquivo:
+    if os.path.exists(caminho_arquivo):
+        with open(caminho_arquivo, 'r') as arquivo:
             animais = json.load(arquivo)
             if 1 <= indice <= len(animais):
                 animais[indice - 1]['nome'] = novo_nome
                 animais[indice - 1]['sexo'] = novo_sexo
                 animais[indice - 1]['especie'] = nova_especie
-                animais[indice - 1]['raça'] = nova_raca
+                animais[indice - 1]['raca'] = nova_raca
                 animais[indice - 1]['idade'] = int(nova_idade)
 
-                with open("animais.json", 'w') as arquivo:
+                with open(caminho_arquivo, 'w') as arquivo:
                     json.dump(animais, arquivo, indent=4, ensure_ascii=False)
                 print("Atualizando o cadastro do animal...")   
                 time.sleep(2)
@@ -143,12 +144,12 @@ def AtualizarAnimal(indice, novo_nome, novo_sexo, nova_especie, nova_raca, nova_
 
 
 def ExcluirAnimal(indice):
-    if os.path.exists("animais.json"):
-        with open("animais.json", 'r') as arquivo:
+    if os.path.exists(caminho_arquivo):
+        with open(caminho_arquivo, 'r') as arquivo:
             animais = json.load(arquivo)
             if 1 <= indice <= len(animais):
                 del animais[indice - 1]
-                with open("animais.json", 'w') as arquivo:
+                with open(caminho_arquivo, 'w') as arquivo:
                     json.dump(animais, arquivo, indent=4, ensure_ascii=False)  
                 print("Deletando o animal do sistema...") 
                 time.sleep(2)
